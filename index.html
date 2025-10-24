@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segunda Ley de Newton - Aplicaciones Reales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>⚡ Segunda Ley de Newton en la Vida Real</h1>
+        <p>Explora F = ma en situaciones cotidianas</p>
+    </header>
+
+    <nav class="main-nav">
+        <button class="nav-btn active" data-section="colisiones">🎱 Colisión de Bolas</button>
+        <button class="nav-btn" data-section="coche">🚗 Frenado de Coche</button>
+        <button class="nav-btn" data-section="elevador">🏢 Elevador</button>
+        <button class="nav-btn" data-section="cohete">🚀 Lanzamiento Cohete</button>
+        <button class="nav-btn" data-section="bicicleta">🚴 Bicicleta</button>
+    </nav>
+
+    <main class="container">
+        <!-- SECCIÓN 1: COLISIÓN DE BOLAS -->
+        <section id="colisiones" class="content-section active">
+            <h2>🎱 Colisión de Bolas de Billar</h2>
+            <p class="description">
+                Cuando dos bolas colisionan, la segunda ley de Newton gobierna el cambio de momento. 
+                La fuerza de impacto depende de las masas y velocidades involucradas.
+            </p>
+
+            <div class="simulator-card">
+                <canvas id="canvas-colision" width="800" height="400"></canvas>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Masa Bola Blanca (kg): <span id="val-masa1">0.17</span></label>
+                        <input type="range" id="masa1" min="0.1" max="0.5" step="0.01" value="0.17">
+                    </div>
+                    <div class="control-group">
+                        <label>Velocidad Inicial Blanca (m/s): <span id="val-vel1">5</span></label>
+                        <input type="range" id="vel1" min="1" max="15" step="0.5" value="5">
+                    </div>
+                    <div class="control-group">
+                        <label>Masa Bola Roja (kg): <span id="val-masa2">0.17</span></label>
+                        <input type="range" id="masa2" min="0.1" max="0.5" step="0.01" value="0.17">
+                    </div>
+                    <div class="control-group">
+                        <label>Coeficiente de Restitución: <span id="val-rest">0.95</span></label>
+                        <input type="range" id="rest" min="0.5" max="1" step="0.05" value="0.95">
+                    </div>
+                    <div class="button-group">
+                        <button id="btn-reset-colision" class="btn-primary">🔄 Reiniciar</button>
+                        <button id="btn-play-colision" class="btn-success">▶️ Lanzar</button>
+                    </div>
+                </div>
+
+                <div class="results" id="resultado-colision">
+                    <h3>📊 Análisis de Colisión</h3>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <strong>Momento Inicial:</strong>
+                            <span id="momento-inicial">0 kg·m/s</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Fuerza de Impacto:</strong>
+                            <span id="fuerza-impacto">0 N</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Energía Cinética Inicial:</strong>
+                            <span id="energia-inicial">0 J</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Estado:</strong>
+                            <span id="estado-colision">Esperando...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: FRENADO DE COCHE -->
+        <section id="coche" class="content-section">
+            <h2>🚗 Frenado de un Automóvil</h2>
+            <p class="description">
+                Al frenar un coche, la fuerza aplicada por los frenos genera una desaceleración proporcional 
+                a la masa del vehículo. F = ma determina la distancia de frenado.
+            </p>
+
+            <div class="simulator-card">
+                <canvas id="canvas-coche" width="800" height="400"></canvas>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Masa del Coche (kg): <span id="val-masa-coche">1200</span></label>
+                        <input type="range" id="masa-coche" min="800" max="2500" step="50" value="1200">
+                    </div>
+                    <div class="control-group">
+                        <label>Velocidad Inicial (km/h): <span id="val-vel-coche">60</span></label>
+                        <input type="range" id="vel-coche" min="20" max="120" step="5" value="60">
+                    </div>
+                    <div class="control-group">
+                        <label>Fuerza de Frenado (kN): <span id="val-fuerza-freno">8</span></label>
+                        <input type="range" id="fuerza-freno" min="2" max="15" step="0.5" value="8">
+                    </div>
+                    <div class="button-group">
+                        <button id="btn-reset-coche" class="btn-primary">🔄 Reiniciar</button>
+                        <button id="btn-play-coche" class="btn-success">🚦 Frenar</button>
+                    </div>
+                </div>
+
+                <div class="results" id="resultado-coche">
+                    <h3>📊 Análisis de Frenado</h3>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <strong>Desaceleración:</strong>
+                            <span id="desaceleracion">0 m/s²</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Distancia de Frenado:</strong>
+                            <span id="distancia-frenado">0 m</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Tiempo de Frenado:</strong>
+                            <span id="tiempo-frenado">0 s</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Velocidad Actual:</strong>
+                            <span id="vel-actual-coche">0 km/h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: ELEVADOR -->
+        <section id="elevador" class="content-section">
+            <h2>🏢 Elevador Subiendo y Bajando</h2>
+            <p class="description">
+                En un elevador, sientes cambios en tu peso aparente debido a la aceleración. 
+                La tensión del cable debe vencer tu peso y proporcionar la aceleración necesaria.
+            </p>
+
+            <div class="simulator-card">
+                <canvas id="canvas-elevador" width="800" height="500"></canvas>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Masa de la Persona (kg): <span id="val-masa-persona">70</span></label>
+                        <input type="range" id="masa-persona" min="40" max="120" step="5" value="70">
+                    </div>
+                    <div class="control-group">
+                        <label>Aceleración del Elevador (m/s²): <span id="val-acel-elevador">2</span></label>
+                        <input type="range" id="acel-elevador" min="-3" max="3" step="0.5" value="2">
+                    </div>
+                    <div class="button-group">
+                        <button id="btn-reset-elevador" class="btn-primary">🔄 Reiniciar</button>
+                        <button id="btn-play-elevador" class="btn-success">▶️ Mover</button>
+                    </div>
+                </div>
+
+                <div class="results" id="resultado-elevador">
+                    <h3>📊 Análisis del Elevador</h3>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <strong>Peso Real:</strong>
+                            <span id="peso-real">686 N</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Peso Aparente:</strong>
+                            <span id="peso-aparente">826 N</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Tensión del Cable:</strong>
+                            <span id="tension-cable">826 N</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Sensación:</strong>
+                            <span id="sensacion">Más pesado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: COHETE -->
+        <section id="cohete" class="content-section">
+            <h2>🚀 Lanzamiento de Cohete</h2>
+            <p class="description">
+                Un cohete acelera expulsando masa hacia atrás. La fuerza neta es el empuje menos 
+                el peso, y la aceleración aumenta a medida que se consume combustible (F = ma).
+            </p>
+
+            <div class="simulator-card">
+                <canvas id="canvas-cohete" width="800" height="500"></canvas>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Masa Inicial Cohete (kg): <span id="val-masa-cohete">5000</span></label>
+                        <input type="range" id="masa-cohete" min="1000" max="10000" step="500" value="5000">
+                    </div>
+                    <div class="control-group">
+                        <label>Empuje del Motor (kN): <span id="val-empuje">60</span></label>
+                        <input type="range" id="empuje" min="20" max="150" step="5" value="60">
+                    </div>
+                    <div class="control-group">
+                        <label>Consumo de Combustible (kg/s): <span id="val-consumo">15</span></label>
+                        <input type="range" id="consumo" min="5" max="30" step="1" value="15">
+                    </div>
+                    <div class="button-group">
+                        <button id="btn-reset-cohete" class="btn-primary">🔄 Reiniciar</button>
+                        <button id="btn-play-cohete" class="btn-success">🚀 Lanzar</button>
+                    </div>
+                </div>
+
+                <div class="results" id="resultado-cohete">
+                    <h3>📊 Telemetría del Cohete</h3>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <strong>Masa Actual:</strong>
+                            <span id="masa-actual">5000 kg</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Aceleración:</strong>
+                            <span id="aceleracion-cohete">2.2 m/s²</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Velocidad:</strong>
+                            <span id="velocidad-cohete">0 m/s</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Altitud:</strong>
+                            <span id="altitud-cohete">0 m</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: BICICLETA -->
+        <section id="bicicleta" class="content-section">
+            <h2>🚴 Pedaleo en Bicicleta</h2>
+            <p class="description">
+                Al pedalear, aplicas fuerza. Considerando la masa total (ciclista + bici) y 
+                la resistencia del aire, F = ma determina tu aceleración.
+            </p>
+
+            <div class="simulator-card">
+                <canvas id="canvas-bicicleta" width="800" height="400"></canvas>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Masa Total (kg): <span id="val-masa-bici">80</span></label>
+                        <input type="range" id="masa-bici" min="60" max="150" step="5" value="80">
+                    </div>
+                    <div class="control-group">
+                        <label>Fuerza de Pedaleo (N): <span id="val-fuerza-pedaleo">150</span></label>
+                        <input type="range" id="fuerza-pedaleo" min="50" max="400" step="10" value="150">
+                    </div>
+                    <div class="control-group">
+                        <label>Coef. Resistencia Aire: <span id="val-resistencia">0.3</span></label>
+                        <input type="range" id="resistencia" min="0.1" max="0.8" step="0.05" value="0.3">
+                    </div>
+                    <div class="control-group">
+                        <label>Pendiente (%): <span id="val-pendiente">0</span></label>
+                        <input type="range" id="pendiente" min="-10" max="10" step="1" value="0">
+                    </div>
+                    <div class="button-group">
+                        <button id="btn-reset-bici" class="btn-primary">🔄 Reiniciar</button>
+                        <button id="btn-play-bici" class="btn-success">🚴 Pedalear</button>
+                    </div>
+                </div>
+
+                <div class="results" id="resultado-bici">
+                    <h3>📊 Análisis de Pedaleo</h3>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <strong>Fuerza Neta:</strong>
+                            <span id="fuerza-neta-bici">0 N</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Aceleración:</strong>
+                            <span id="aceleracion-bici">0 m/s²</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Velocidad:</strong>
+                            <span id="velocidad-bici">0 km/h</span>
+                        </div>
+                        <div class="result-item">
+                            <strong>Distancia:</strong>
+                            <span id="distancia-bici">0 m</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Desarrollado para comprender F = ma en situaciones reales | 2025</p>
+        <p>Segunda Ley de Newton: La fuerza neta sobre un objeto es igual a su masa por su aceleración</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
